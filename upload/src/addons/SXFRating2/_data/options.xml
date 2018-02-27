@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="sxfrListPerPage" edit_format="spinbox" data_type="integer">
+    <default_value>20</default_value>
+    <edit_format_params>min=1</edit_format_params>
+    <relation group_id="sxfr" display_order="1"/>
+  </option>
+  <option option_id="sxfrRatingItemLimit" edit_format="spinbox" data_type="integer">
+    <default_value>50</default_value>
+    <edit_format_params>min=5</edit_format_params>
+    <relation group_id="sxfr" display_order="1"/>
+  </option>
+</options>

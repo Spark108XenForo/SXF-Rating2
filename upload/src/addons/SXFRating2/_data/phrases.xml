@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.sxfr" version_id="2000070" version_string="2.0.0"><![CDATA[[SXF] Ratings]]></phrase>
+  <phrase title="admin_navigation.sxfrRatings" version_id="2000070" version_string="2.0.0"><![CDATA[Ratings]]></phrase>
+  <phrase title="nav.sxfrRatings" version_id="2000070" version_string="2.0.0"><![CDATA[Ratings]]></phrase>
+  <phrase title="option.sxfrListPerPage" version_id="2000070" version_string="2.0.0"><![CDATA[Number of ratings per page]]></phrase>
+  <phrase title="option.sxfrRatingItemLimit" version_id="2000070" version_string="2.0.0"><![CDATA[Number of entries on the default rating page]]></phrase>
+  <phrase title="option_explain.sxfrListPerPage" version_id="2000070" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.sxfrRatingItemLimit" version_id="2000070" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="option_group.sxfr" version_id="2000070" version_string="2.0.0"><![CDATA[[SXF] Ratings]]></phrase>
+  <phrase title="option_group_description.sxfr" version_id="2000070" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="permission.sxfr_viewRating" version_id="2000070" version_string="2.0.0"><![CDATA[View ratings]]></phrase>
+  <phrase title="permission_interface.sxfr" version_id="2000070" version_string="2.0.0"><![CDATA[[SXF] Ratings]]></phrase>
+  <phrase title="sxfr_add_rating" version_id="2000070" version_string="2.0.0"><![CDATA[Add rating]]></phrase>
+  <phrase title="sxfr_edit_rating" version_id="2000070" version_string="2.0.0"><![CDATA[Edit Rating]]></phrase>
+  <phrase title="sxfr_icon" version_id="2000070" version_string="2.0.0"><![CDATA[Icon]]></phrase>
+  <phrase title="sxfr_icon_explain" version_id="2000070" version_string="2.0.0"><![CDATA[The path to the image or the FontAwesome icon.]]></phrase>
+  <phrase title="sxfr_no_ratings_found" version_id="2000070" version_string="2.0.0"><![CDATA[No ratings found!]]></phrase>
+  <phrase title="sxfr_rating_can_not_be_activated" version_id="2000070" version_string="2.0.0"><![CDATA[Rating can not be activated!]]></phrase>
+  <phrase title="sxfr_rating_id" version_id="2000070" version_string="2.0.0"><![CDATA[Rating ID]]></phrase>
+  <phrase title="sxfr_rating_is_active" version_id="2000070" version_string="2.0.0"><![CDATA[Rating is active]]></phrase>
+  <phrase title="sxfr_ratings" version_id="2000070" version_string="2.0.0"><![CDATA[Ratings]]></phrase>
+  <phrase title="sxfr_you_are_in_x_place" version_id="2000070" version_string="2.0.0"><![CDATA[You are in <b>{place}</b> place!]]></phrase>
+  <phrase title="sxfr_you_are_not_participating_in_the_rating" version_id="2000070" version_string="2.0.0"><![CDATA[You are not participating in the rating!]]></phrase>
+</phrases>

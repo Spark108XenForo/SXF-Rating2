@@ -1,0 +1,52 @@
+{
+    "admin/sxfr_rating_edit.html": {
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "9bf3d9a032cec2cceb9c399e90b3bad2"
+    },
+    "admin/sxfr_rating_list.html": {
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "adb43e28eecbc32ff94c4fad04c305f0"
+    },
+    "public/sxfr_rating.less": {
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "609bea38793e4ab34c189641f71443fe"
+    },
+    "public/sxfr_rating_list.html": {
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "ed7260147020a98dac4ac912ca66b46c"
+    },
+    "public/sxfr_rating_macros.html": {
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "373dec4e8d9192173890950887f08933"
+    },
+    "public/sxfr_rating_view.html": {
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "ee924540cfb032d28f07ee355f7ff966"
+    },
+    "public/sxfr_rating_view_userlikes_macro.html": {
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "abbf3b409765a91addaba388b980eef4"
+    },
+    "public/sxfr_rating_view_usermessages_macro.html": {
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "5346ce0aab1b8235e5562bff4d78683e"
+    },
+    "public/sxfr_rating_view_userpoints_macro.html": {
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "f43e7aa19956ffd03a076ecf5f25e2c5"
+    },
+    "public/sxfr_rating_view_userresource_macro.html": {
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "7cd88f8263355a6206d116bb5195c54c"
+    }
+}

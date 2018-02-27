@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="sxfr-ratings" format=":str&lt;rating_id&gt;/" controller="SXFRating2:Rating" context="sxfrRatings"/>
+  <route route_type="public" route_prefix="ratings" format=":str&lt;rating_id&gt;/" controller="SXFRating2:Rating" context="sxfrRatings"/>
+</routes>

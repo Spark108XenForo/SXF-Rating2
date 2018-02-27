@@ -1,0 +1,44 @@
+<xf:macro name="view" arg-rating="{$rating}">
+	<xf:if is="{$rating.visitorPlace}">
+		<div class="block rating-visitor-place">
+			<div class="block-container">
+				<div class="block-body">
+					<div class="block-row">
+						<div class="number">{$rating.visitorPlace}</div>
+						<div class="avatar">
+							<xf:avatar user="{$xf.visitor}" size="s" notooltip="true" />
+						</div>
+						<div class="username">
+							<xf:username user="{$xf.visitor}" />
+						</div>
+						<div class="count">{$xf.visitor.trophy_points}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+	
+	<div class="block">
+		<div class="block-container">
+			<xf:datalist>
+				<xf:datarow>
+					<xf:cell>#</xf:cell>
+					<xf:cell>{{ phrase('name') }}</xf:cell>
+					<xf:cell>{{ phrase('points') }}</xf:cell>
+				</xf:datarow>
+
+				<xf:foreach loop="{$rating.list}" key="{$key}" value="{$user}">
+					<xf:datarow rowclass="rating-item--{{ $key + 1 }}">
+						<xf:cell>{{ $key + 1 }}</xf:cell>
+						<xf:cell>
+							<xf:username user="{$user}" />
+						</xf:cell>
+						<xf:cell>
+							{$user.trophy_points}
+						</xf:cell>
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+	</div>
+</xf:macro>

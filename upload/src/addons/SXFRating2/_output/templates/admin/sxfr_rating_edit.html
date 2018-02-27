@@ -1,0 +1,62 @@
+<xf:if is="$rating.isInsert()">
+	<xf:title>{{ phrase('sxfr_add_rating') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('sxfr_edit_rating:') }} {$rating.title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$rating.isUpdate()">
+	<xf:button href="{{ link('sxfr-ratings/delete', $rating) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('sxfr-ratings/save', $rating) }}" ajax="true" class="block"
+	data-xf-init="mods-form"
+	data-permission-type="global">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="rating_id" value="{$rating.rating_id}" 
+				maxlength="{{ max_length($rating, 'rating_id') }}"
+				label="{{ phrase('sxfr_rating_id') }}"
+				hint="{{ phrase('must_be_unique') }}" />
+			
+			<xf:textboxrow name="title" value="{$rating.title}" maxlength="{{ max_length($rating, 'title') }}"
+				label="{{ phrase('title') }}" />
+			
+			<xf:textboxrow name="icon" value="{$rating.icon}" maxlength="{{ max_length($rating, 'icon') }}"
+				label="{{ phrase('sxfr_icon') }}"
+				explain="{{ phrase('sxfr_icon_explain') }}" />
+			
+			<xf:textboxrow name="callback" value="{$rating.callback}" maxlength="{{ max_length($rating, 'callback') }}"
+				label="{{ phrase('callback') }}"
+				explain="{{ phrase('sxfr_callback_explain') }}" />
+			
+			<xf:checkboxrow>
+				<xf:option name="active" checked="{$rating.active}" disabled="{{ $rating.isUse ? '' : 'disabled' }}">
+					<xf:label>{{ phrase('sxfr_rating_is_active') }}</xf:label>
+
+					<xf:hint>
+						<xf:if is="!{$rating.isUse}">
+							{{ phrase('sxfr_rating_can_not_be_activated') }}
+							<xf:if contentcheck="true">
+								<ul>
+									<xf:contentcheck>
+										<xf:foreach loop="{{ $rating.handler.getErrors() }}" value="$error">
+											<li>{$error}</li>
+										</xf:foreach>
+									</xf:contentcheck>
+								</ul>
+							</xf:if>
+						</xf:if>
+					</xf:hint>
+				</xf:option>
+			</xf:checkboxrow>
+		</div>
+
+		<xf:submitrow sticky="true" icon="save">
+			<xf:html>
+				<xf:button type="submit" icon="save" name="exit">{{ phrase('save_and_exit') }}</xf:button>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+
+</xf:form>

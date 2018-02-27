@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="sxfr_rating.less" version_id="2000070" version_string="2.0.0"><![CDATA[.rating
+{
+	.dataList-cell .is-match 
+	{
+		text-decoration: none;
+		color: inherit;
+	}
+}
+
+.rating-item
+{
+	&--visitor
+	{
+		&.dataList-row
+		{
+			&.dataList-row--subSection
+			{
+				.dataList-cell
+				{
+					background-color: #a78926;
+					color: white;
+					border-bottom: none;
+					font-size: 15px;
+					border-bottom: 5px #ececec solid;
+					border-top: 5px #ececec solid;
+				}
+			}
+		}
+	}
+	
+	&--1
+	{
+		background-color: #ffd700;
+		
+		&:hover
+		{
+			background-color: #ffdc33 !important;
+		}
+		
+		td
+		{
+			border: none;
+		}
+	}
+	&--2
+	{
+		background-color: #c0c0c0;
+		
+		&:hover
+		{
+			background-color: #bbbbbb !important;
+		}
+		
+		td
+		{
+			border: none;
+		}
+	}
+	&--3
+	{
+		background-color: #cd7f32;
+		
+		&:hover
+		{
+			background-color: #cd853f !important;
+		}
+		
+		td
+		{
+			border: none;
+		}
+	}
+}
+
+.rating-visitor-place
+{
+	.block-row 
+	{
+    	display: flex;
+	}
+	.number 
+	{
+		padding: 7px 20px;
+		font-size: 24px;
+		flex-shrink: 0;
+	}
+	.avatar 
+	{
+		flex-shrink: 0;
+	}
+	.username 
+	{
+		padding: 13px;
+		width: 100%;
+	}
+	.count 
+	{
+		padding: 7px 20px;
+		font-size: 24px;
+		flex-shrink: 0;
+	}
+}
+
+.rating-list
+{
+	.rating-item 
+	{
+		display: inline-grid;
+		text-decoration: none;
+    	font-weight: bold;
+		transition: .5s;
+		margin: 5px;
+		
+		&:hover 
+		{
+			transform: scale(1.1);
+			-ms-transform: scale(1.1);
+			-webkit-transform: scale(1.1);
+			-o-transform: scale(1.1);
+			-moz-transform: scale(1.1);
+			
+			.icon
+			{
+				transform: rotate(360deg);
+				-ms-transform: rotate(360deg);
+				-webkit-transform: rotate(360deg);
+				-o-transform: rotate(360deg);
+				-moz-transform: rotate(360deg);
+			}
+		}
+		
+		.block-body
+		{
+			width: 200px;
+			height: 200px;
+			text-align: center;
+		}
+		
+		.icon 
+		{
+			padding: 20px;
+			color: #21c0e6;
+		    transition: .5s;
+		}
+		.title 
+		{
+			padding: 15px;
+		}
+		.explain 
+		{
+			color: rgba(255, 255, 255, 0.7);
+			font-weight: 100;
+			background-color: #aeaf23;
+			padding: 2px;
+		}
+	}
+}
+
+/** For mobile. */
+@media (max-width: @xf-responsiveWide) 
+{
+	.rating-list
+	{
+		.rating-item 
+		{
+			display: block;
+			
+			&:hover 
+			{
+				transform: none;
+				-ms-transform: none;
+				-webkit-transform: none;
+				-o-transform: none;
+				-moz-transform: none;
+			}
+			
+			.block-body 
+			{
+				width: 100%;
+			}
+		}
+	}
+}]]></template>
+  <template type="admin" title="sxfr_rating_edit" version_id="2000070" version_string="2.0.0"><![CDATA[<xf:if is="$rating.isInsert()">
+	<xf:title>{{ phrase('sxfr_add_rating') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('sxfr_edit_rating:') }} {$rating.title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$rating.isUpdate()">
+	<xf:button href="{{ link('sxfr-ratings/delete', $rating) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('sxfr-ratings/save', $rating) }}" ajax="true" class="block"
+	data-xf-init="mods-form"
+	data-permission-type="global">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="rating_id" value="{$rating.rating_id}" 
+				maxlength="{{ max_length($rating, 'rating_id') }}"
+				label="{{ phrase('sxfr_rating_id') }}"
+				hint="{{ phrase('must_be_unique') }}" />
+			
+			<xf:textboxrow name="title" value="{$rating.title}" maxlength="{{ max_length($rating, 'title') }}"
+				label="{{ phrase('title') }}" />
+			
+			<xf:textboxrow name="icon" value="{$rating.icon}" maxlength="{{ max_length($rating, 'icon') }}"
+				label="{{ phrase('sxfr_icon') }}"
+				explain="{{ phrase('sxfr_icon_explain') }}" />
+			
+			<xf:textboxrow name="callback" value="{$rating.callback}" maxlength="{{ max_length($rating, 'callback') }}"
+				label="{{ phrase('callback') }}"
+				explain="{{ phrase('sxfr_callback_explain') }}" />
+			
+			<xf:checkboxrow>
+				<xf:option name="active" checked="{$rating.active}" disabled="{{ $rating.isUse ? '' : 'disabled' }}">
+					<xf:label>{{ phrase('sxfr_rating_is_active') }}</xf:label>
+
+					<xf:hint>
+						<xf:if is="!{$rating.isUse}">
+							{{ phrase('sxfr_rating_can_not_be_activated') }}
+							<xf:if contentcheck="true">
+								<ul>
+									<xf:contentcheck>
+										<xf:foreach loop="{{ $rating.handler.getErrors() }}" value="$error">
+											<li>{$error}</li>
+										</xf:foreach>
+									</xf:contentcheck>
+								</ul>
+							</xf:if>
+						</xf:if>
+					</xf:hint>
+				</xf:option>
+			</xf:checkboxrow>
+		</div>
+
+		<xf:submitrow sticky="true" icon="save">
+			<xf:html>
+				<xf:button type="submit" icon="save" name="exit">{{ phrase('save_and_exit') }}</xf:button>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+
+</xf:form>]]></template>
+  <template type="admin" title="sxfr_rating_list" version_id="2000070" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('sxfr_ratings') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('sxfr-ratings/add') }}" icon="add">
+		{{ phrase('sxfr_add_rating') }}
+	</xf:button>
+</xf:pageaction>
+
+<xf:form action="{{ link('sxfr-ratings/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro template="filter_macros" name="quick_filter" arg-key="ratings" arg-class="block-outer-opposite" />
+	</div>
+	
+	<div class="block-container">
+		<xf:if is="$ratings is not empty">
+			<div class="block-body">
+				<xf:datalist>
+					<xf:foreach loop="$ratings" value="$rating">
+						<xf:datarow>
+							<xf:main hash="{$rating.rating_id}" href="{{ link('sxfr-ratings/edit', $rating) }}"
+								label="{$rating.title}" />
+
+							<xf:toggle name="active[{$rating.rating_id}]" selected="{$rating.active}"
+								class="dataList-cell--separated" submit="true"
+								tooltip="{{ phrase('enable_disable_x', {'title': $rating.title}) }}" />
+							
+							<xf:delete href="{{ link('sxfr-ratings/delete', $rating) }}" />
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals(count($ratings)) }}</span>
+			</div>
+		<xf:else />
+			<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="sxfr_rating_list" version_id="2000070" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('sxfr_ratings') }}</xf:title>
+
+<xf:css src="sxfr_rating.less" />
+
+<xf:if is="$ratings is not empty">
+	<div class="rating-list">
+		<xf:foreach loop="{$ratings}" value="$rating">
+			<xf:if is="{{ $rating.getIsUse() }}">
+				<xf:macro name="rating_item" arg-rating="{$rating}" />
+			</xf:if>
+		</xf:foreach>
+	</div>
+<xf:else />
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<div class="block-row">
+					{{ phrase('sxfr_no_ratings_found') }}
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+<xf:macro name="rating_item" arg-rating="!">
+	<a class="block rating-item" href="{{ link('ratings', $rating) }}">
+		<div class="block-container">
+			<div class="block-body">
+				<div class="icon">
+					<xf:macro name="rating_item_icon" arg-rating="{$rating}" />
+				</div>
+				<div class="title">{$rating.title}</div>
+				<div class="explain">
+					<xf:if is="{$rating.visitorPlace}">
+						{{ phrase('sxfr_you_are_in_x_place', {
+							'place': $rating.visitorPlace
+						}) }}
+					<xf:else />
+						{{ phrase('sxfr_you_are_not_participating_in_the_rating') }}
+					</xf:if>
+				</div>
+			</div>
+		</div>
+	</a>
+</xf:macro>
+
+<xf:macro name="rating_item_icon" arg-rating="!">
+	<xf:if is="$rating.hasFaIcon()">
+		<i class="fa {$rating.icon} fa-5x" aria-hidden="true"></i>
+	<xf:elseif is="$rating.hasIcon()" />
+		<img src="{{ link('ratings/icon', null, {'type':$rating.type}) }}" alt="{$rating.title}" />
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="sxfr_rating_macros" version_id="2000070" version_string="2.0.0"><![CDATA[<xf:macro name="quick_filter" arg-key="" arg-ajax="" arg-class="" arg-rating="!">
+	<xf:js src="xf/filter.js" min="1">
+		jQuery.extend(XF.phrases, {
+			no_items_matched_your_filter: "{{ phrase('no_items_matched_your_filter')|escape('js') }}",
+		});
+	</xf:js>
+	
+	<div class="{$class} quickFilter u-jsOnly" data-xf-init="filter" data-key="{$key}" data-ajax="{$ajax}">
+		<div class="inputGroup inputGroup--inline inputGroup--joined">
+			<a class="inputGroup-text" href="{{ link('ratings', $rating, {'limit':25}) }}">25</a>
+			<a class="inputGroup-text" href="{{ link('ratings', $rating, {'limit':50}) }}">50</a>
+			<a class="inputGroup-text" href="{{ link('ratings', $rating, {'limit':100}) }}">100</a>
+			<a class="inputGroup-text" href="{{ link('ratings', $rating, {'limit':250}) }}">250</a>
+			<a class="inputGroup-text" href="{{ link('ratings', $rating, {'limit':500}) }}">500</a>
+			
+			<input type="text" class="input js-filterInput" placeholder="{{ phrase('filter...') }}" data-xf-key="{{ phrase('shortcut.filter') }}" />
+			
+			<xf:checkbox standalone="true">
+				<xf:option labelclass="inputGroup-text" class="js-filterPrefix" label="{{ phrase('prefix') }}" />
+			</xf:checkbox>
+			
+			<i class="inputGroup-text js-filterClear is-disabled" aria-hidden="true"></i>
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="sxfr_rating_view" version_id="2000070" version_string="2.0.0"><![CDATA[<xf:title>{$rating.title}</xf:title>
+
+<xf:css src="sxfr_rating.less" />
+
+<div class="block rating">
+	<div class="block-outer">
+		<xf:macro template="sxfr_rating_macros" name="quick_filter" arg-key="rating" arg-class="block-outer-opposite"
+			arg-rating="{$rating}"/>
+	</div>
+	
+	<xf:macro template="sxfr_rating_view_{$rating.rating_id}_macro" name="view" arg-rating="{$rating}" />
+</div>]]></template>
+  <template type="public" title="sxfr_rating_view_userlikes_macro" version_id="2000070" version_string="2.0.0"><![CDATA[<xf:macro name="view" arg-rating="{$rating}">
+	<xf:if is="{$rating.visitorPlace}">
+		<div class="block rating-visitor-place">
+			<div class="block-container">
+				<div class="block-body">
+					<div class="block-row">
+						<div class="number">{$rating.visitorPlace}</div>
+						<div class="avatar">
+							<xf:avatar user="{$xf.visitor}" size="s" notooltip="true" />
+						</div>
+						<div class="username">
+							<xf:username user="{$xf.visitor}" />
+						</div>
+						<div class="count">{$xf.visitor.like_count}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+	
+	<div class="block">
+		<div class="block-container">
+			<xf:datalist>
+				<xf:datarow>
+					<xf:cell>#</xf:cell>
+					<xf:cell>{{ phrase('name') }}</xf:cell>
+					<xf:cell>{{ phrase('likes') }}</xf:cell>
+				</xf:datarow>
+
+				<xf:foreach loop="{$rating.list}" key="{$key}" value="{$user}">
+					<xf:datarow rowclass="rating-item--{{ $key + 1 }}">
+						<xf:cell>{{ $key + 1 }}</xf:cell>
+						<xf:cell>
+							<xf:username user="{$user}" />
+						</xf:cell>
+						<xf:cell>
+							{$user.like_count}
+						</xf:cell>
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="sxfr_rating_view_usermessages_macro" version_id="2000070" version_string="2.0.0"><![CDATA[<xf:macro name="view" arg-rating="{$rating}">
+	<xf:if is="{$rating.visitorPlace}">
+		<div class="block rating-visitor-place">
+			<div class="block-container">
+				<div class="block-body">
+					<div class="block-row">
+						<div class="number">{$rating.visitorPlace}</div>
+						<div class="avatar">
+							<xf:avatar user="{$xf.visitor}" size="s" notooltip="true" />
+						</div>
+						<div class="username">
+							<xf:username user="{$xf.visitor}" />
+						</div>
+						<div class="count">{$xf.visitor.message_count}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+	
+	<div class="block">
+		<div class="block-container">
+			<xf:datalist>
+				<xf:datarow>
+					<xf:cell>#</xf:cell>
+					<xf:cell>{{ phrase('name') }}</xf:cell>
+					<xf:cell>{{ phrase('messages') }}</xf:cell>
+				</xf:datarow>
+
+				<xf:foreach loop="{$rating.list}" key="{$key}" value="{$user}">
+					<xf:datarow rowclass="rating-item--{{ $key + 1 }}">
+						<xf:cell>{{ $key + 1 }}</xf:cell>
+						<xf:cell>
+							<xf:username user="{$user}" />
+						</xf:cell>
+						<xf:cell>
+							{$user.message_count}
+						</xf:cell>
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="sxfr_rating_view_userpoints_macro" version_id="2000070" version_string="2.0.0"><![CDATA[<xf:macro name="view" arg-rating="{$rating}">
+	<xf:if is="{$rating.visitorPlace}">
+		<div class="block rating-visitor-place">
+			<div class="block-container">
+				<div class="block-body">
+					<div class="block-row">
+						<div class="number">{$rating.visitorPlace}</div>
+						<div class="avatar">
+							<xf:avatar user="{$xf.visitor}" size="s" notooltip="true" />
+						</div>
+						<div class="username">
+							<xf:username user="{$xf.visitor}" />
+						</div>
+						<div class="count">{$xf.visitor.trophy_points}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+	
+	<div class="block">
+		<div class="block-container">
+			<xf:datalist>
+				<xf:datarow>
+					<xf:cell>#</xf:cell>
+					<xf:cell>{{ phrase('name') }}</xf:cell>
+					<xf:cell>{{ phrase('points') }}</xf:cell>
+				</xf:datarow>
+
+				<xf:foreach loop="{$rating.list}" key="{$key}" value="{$user}">
+					<xf:datarow rowclass="rating-item--{{ $key + 1 }}">
+						<xf:cell>{{ $key + 1 }}</xf:cell>
+						<xf:cell>
+							<xf:username user="{$user}" />
+						</xf:cell>
+						<xf:cell>
+							{$user.trophy_points}
+						</xf:cell>
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="sxfr_rating_view_userresource_macro" version_id="2000070" version_string="2.0.0"><![CDATA[<xf:macro name="view" arg-rating="{$rating}">
+	<xf:if is="{$rating.visitorPlace}">
+		<div class="block rating-visitor-place">
+			<div class="block-container">
+				<div class="block-body">
+					<div class="block-row">
+						<div class="number">{$rating.visitorPlace}</div>
+						<div class="avatar">
+							<xf:avatar user="{$xf.visitor}" size="s" notooltip="true" />
+						</div>
+						<div class="username">
+							<xf:username user="{$xf.visitor}" />
+						</div>
+						<div class="count">{$xf.visitor.xfrm_resource_count}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+	
+	<div class="block">
+		<div class="block-container">
+			<xf:datalist>
+				<xf:datarow>
+					<xf:cell>#</xf:cell>
+					<xf:cell>{{ phrase('name') }}</xf:cell>
+					<xf:cell>{{ phrase('nav.xfrm') }}</xf:cell>
+				</xf:datarow>
+
+				<xf:foreach loop="{$rating.list}" key="{$key}" value="{$user}">
+					<xf:datarow rowclass="rating-item--{{ $key + 1 }}">
+						<xf:cell>{{ $key + 1 }}</xf:cell>
+						<xf:cell>
+							<xf:username user="{$user}" />
+						</xf:cell>
+						<xf:cell>
+							{$user.xfrm_resource_count}
+						</xf:cell>
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+	</div>
+</xf:macro>]]></template>
+</templates>

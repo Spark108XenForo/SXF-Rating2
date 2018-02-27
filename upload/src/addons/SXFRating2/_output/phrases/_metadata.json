@@ -1,0 +1,134 @@
+{
+    "admin_navigation.sxfr.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "0cfb268b7b383b1b966092279d24301d"
+    },
+    "admin_navigation.sxfrRatings.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "e8dcd33ae274522f351c266f028eed7b"
+    },
+    "nav.sxfrRatings.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "e8dcd33ae274522f351c266f028eed7b"
+    },
+    "option.sxfrListPerPage.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "97f6dfa86770f21286c84e1582c91ed8"
+    },
+    "option.sxfrRatingItemLimit.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "4968a0219f731d34ca9324889e896bed"
+    },
+    "option_explain.sxfrListPerPage.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.sxfrRatingItemLimit.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_group.sxfr.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "0cfb268b7b383b1b966092279d24301d"
+    },
+    "option_group_description.sxfr.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "permission.sxfr_viewRating.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "cd8e3ad13988cb376ac49f9eec0068e9"
+    },
+    "permission_interface.sxfr.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "0cfb268b7b383b1b966092279d24301d"
+    },
+    "sxfr_add_rating.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "4afe34c88053e23870641672059a4638"
+    },
+    "sxfr_edit_rating.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "3f75698055c8a4810a619116f4fb3d65"
+    },
+    "sxfr_icon.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "817434295a673aed431435658b65d9a7"
+    },
+    "sxfr_icon_explain.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "e11762d8df640d1eea30e69f45e7a74e"
+    },
+    "sxfr_no_ratings_found.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "1c9684418cb0a6a5048c097c9259fdb6"
+    },
+    "sxfr_rating_can_not_be_activated.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "903a2cd59188643b79f39a026f9a2444"
+    },
+    "sxfr_rating_id.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "c411402d198fac87b02b1dc20c73efc0"
+    },
+    "sxfr_rating_is_active.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "91ee39f0c4df6adb052d34e956e0ebb0"
+    },
+    "sxfr_ratings.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "e8dcd33ae274522f351c266f028eed7b"
+    },
+    "sxfr_you_are_in_x_place.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "091c1fe6ab45e887de2a697ed2aaae6f"
+    },
+    "sxfr_you_are_not_participating_in_the_rating.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "bff609a7389785c5d18412ac0b0aa690"
+    }
+}

@@ -1,0 +1,1 @@
+You are in <b>{place}</b> place!
